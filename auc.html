@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Auctions</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Flexbox layout for sticky footer */
+        html, body {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .container {
+            flex: 1; /* Allows the container to take up remaining space */
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .car-listing {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .car {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            flex: 1 1 calc(33% - 40px);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .car img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        .car h3 {
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .car p {
+            color: #555;
+        }
+
+        .auction-form {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .auction-form label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .auction-form input, .auction-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .auction-form button {
+            padding: 10px 15px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .auction-form button:hover {
+            background-color: #555;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 20px;
+        }
+
+        footer .footer-links a {
+            color: #ddd;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        footer .footer-links a:hover {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Car Auction Platform</h1>
+    <p>Bid on the best cars in town!</p>
+</header>
+
+<div class="container">
+    <h2>Available Cars for Auction</h2>
+    <div class="car-listing">
+        <div class="car">
+            <img src="car1.jpg" alt="Car 1">
+            <h3>2020 BMW M3</h3>
+            <p>Starting Bid: $40,000</p>
+            <p>Description: Powerful performance car with a 3.0L turbocharged engine.</p>
+        </div>
+        <div class="car">
+            <img src="car2.jpg" alt="Car 2">
+            <h3>2019 Audi A6</h3>
+            <p>Starting Bid: $35,000</p>
+            <p>Description: Luxury sedan with all-wheel drive and a comfortable interior.</p>
+        </div>
+        <div class="car">
+            <img src="car3.jpg" alt="Car 3">
+            <h3>2021 Tesla Model S</h3>
+            <p>Starting Bid: $75,000</p>
+            <p>Description: Electric car with long-range battery and autopilot feature.</p>
+        </div>
+    </div>
+
+    <div class="auction-form">
+        <h2>Place Your Bid</h2>
+        <form action="submit_bid.php" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="car">Car Model:</label>
+            <input type="text" id="car" name="car" required>
+
+            <label for="bid">Your Bid ($):</label>
+            <input type="number" id="bid" name="bid" required>
+
+            <button type="submit">Submit Bid</button>
+        </form>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2023 Car Auctions. All rights reserved.</p>
+    <div class="footer-links">
+        <a href="#">Contact Us</a> | 
+        <a href="#">Terms of Service</a> | 
+        <a href="#">Privacy Policy</a> | 
+        <a href="#">Facebook</a> | 
+        <a href="#">Twitter</a> | 
+        <a href="#">Instagram</a>
+    </div>
+</footer>
+
+</body>
+</html>

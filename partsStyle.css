@@ -18,6 +18,8 @@
     
 }
 
+
+
 nav ul li{
     display: inline;
     padding: 0 10px;
@@ -29,45 +31,57 @@ nav ul li a:hover{
     background-color: #575757;
     border-radius: 5px;
 }
-
-.card{
+.con-card{
     display: flex;
     justify-content: center;
-    margin: 100px 0 0 600px;
+    flex-wrap: wrap;
+    margin-top: 100px;
 }
 
+
+.card{
+    width: 325px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0px 2px 4px;
+    margin: 20px;
+}
 
 
 
 .card img {
-    width: 18rem;
-    height: auto;
-    margin: 0 0 0 150px;
+    width: 100%;
     background-color: #0f1524;
 }
 
-.card-body{
 
-    margin: 0 0 0 150px;
-}
 
 
 
 
 
 table {
+    background-color: transparent;
     width: 6px;
     border-collapse: collapse;
     text-align: center;
+    
     
     
 }
 
 
 
+
+
+
+
+
+
 footer{
     position: absolute;
-    bottom: 0;
+    bottom: -1;
     right: 0;
     left: 0;
     background: #111;
@@ -76,6 +90,7 @@ footer{
     font-family: "Open Sans";
     padding-top: 4epx;
     color: #fff;
+    margin-top: auto;
 }
 
 
