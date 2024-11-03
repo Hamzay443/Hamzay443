@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Information</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <style>
+         /* Basic Reset */
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #000a1f;
+    font-family: Arial, sans-serif;
+}
+  
+
+.info-box {
+    border: 1px solid #ced4da; 
+    background-color: #575757; 
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center; /* Center text */
+    height: 100%; /* Ensures equal height */
+ }
+.info-icon {
+    font-size: 30px; 
+    margin-bottom: 10px; 
+    color: #007bff; 
+ }
+.message-box {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    height: auto; 
+    padding: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    background-color: #575757; 
+}
+.custom-label {
+color: #ffffff; 
+    }
+
+    .custom-heading {
+        color: #ffffff; 
+    }
+
+
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 20px;
+}
+
+footer .footer-links a {
+    color: #ddd;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+footer .footer-links a:hover {
+    color: #fff;
+}
+
+i{
+    margin: 10px;
+    font-size: 25px;
+}
+
+
+
+        
+    </style>
+</head>
+    <body style="background-color: #000a1f;">
+
+        <nav class="navbar  navbar-expand-sm " style="background-color: #000000; ">
+            <div class="container-fluid ">
+
+                <a class="navbar-brand" href="#">
+                    <img src="Screenshot_27-10-2024_201240_.jpeg" alt="Logo" width="100" height="30" class="d-inline-block align-text-top"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active " aria-current="page" href="./index.html" style="color: white;">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active " aria-current="page" href="#" style="color: white;">Parts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active " aria-current="page" href="./auc.html" style="color: white;">Auctions</a>
+                    </li>
+                    
+                    <li>
+                        <a class="nav-link active " aria-current="page" href="#" style="color: white;">About us</a>
+                    </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                      </form>
+                </div>
+            </div>
+               
+        </nav>
+
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="info-box">
+                    <i class="fas fa-envelope info-icon"></i>
+                    <h4 class="custom-heading">Email Us</h4>
+                    <p class="custom-heading">KnightCreativity@gmail.com</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="info-box">
+                    <i class="fas fa-phone-alt info-icon"></i>
+                    <h4 class="custom-heading">Call Us</h4>
+                    <p class="custom-heading">(+968) 95999959</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="info-box">
+                    <i class="fas fa-map-marker-alt info-icon"></i>
+                    <h4 class="custom-heading">Visit Us</h4>
+                    <p class="custom-heading"> 123 road street </p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="message-box">
+            <h2 class="custom-heading">Send a Message</h2>
+            <form>
+                <div class="form-group">
+                    <label for="senderName" class="custom-label">Name</label>
+                    <input type="text" class="form-control" id="senderName" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="senderEmail" class="custom-label">Email</label>
+                    <input type="email" class="form-control" id="senderEmail" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message" class="custom-label">Message</label>
+                    <textarea class="form-control" id="message" rows="4" placeholder="Your message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <h1 style="color: #000a1f">s</h1>
+    <h1 style="color: #000a1f">s</h1>
+    <h1 style="color: #000a1f">s</h1>
+    <h1 style="color: #000a1f">s</h1>
+    <h1 style="color: #000a1f">s</h1>
+    <h1 style="color: #000a1f">s</h1>
+    <h1 style="color: #000a1f">s</h1>
+    <h1 style="color: #000a1f">s</h1>
+
+
+<footer>
+    <p>&copy; All rights reserved to KNIGHTS CREATIVITY</p>
+    <div class="footer-links">
+        <a href="#">Contact Us</a> | 
+        <a href="#">Terms of Service</a> | 
+        <a href="#">Privacy Policy</a> | 
+        <a href="#">Facebook</a> | 
+        <a href="#">Twitter</a> | 
+        <a href="#">Instagram</a>
+    </div>
+</footer>
+</body>
+</html>

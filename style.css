@@ -1,11 +1,11 @@
- /* Basic Reset */
+
  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Flexbox layout for sticky footer */
+
 html, body {
     height: 100%;
     display: flex;
@@ -39,7 +39,7 @@ nav ul li a:hover {
 .fill {
     background-color: black;
     width: 2600px;
-    height: 300px; /* Reduced height for less space */
+    height: 300px; 
     margin-bottom: 100px;
     display: flex;
     align-items: center;
@@ -48,9 +48,9 @@ nav ul li a:hover {
 }
 
 .homeimg {
-    width: 25%; /* Reduced width */
-    height: 150px; /* Reduced height */
-    margin-top: -80px; /* Adjusts position to appear under the navbar */
+    width: 25%; 
+    height: 150px; 
+    margin-top: -80px; 
 }
 
 h2 {
