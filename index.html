@@ -11,10 +11,41 @@
 
          <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
          
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+        <style>
+            body {
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                margin: 0;
+                background-color: #000a1f;
+            }
+            .main-content {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                min-height: calc(100vh - 60px);
+            }
+            .hero, .testimonials {
+                padding: 50px 0;
+                margin-bottom: 3rem;
+            }
+            .hero {
+                background-color: #000a1f;
+            }
+            .testimonials {
+                background-color: #000a1f;
+            }
+            .content-wrapper {
+                flex: 1;
+                padding-bottom: 3rem;
+            }
+        </style>
 
     </head>
 
-    <body style="background-color: #000a1f;">
+    <body>
 
         <nav class="navbar navbar-expand-sm" style="background-color: #000000;">
             <div class="container-fluid">
@@ -30,9 +61,14 @@
                             <a class="nav-link active" aria-current="page" href="./auc.html" style="color: white;">Auctions</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="contactUs.html" style="color: white;">Support</a>
+                            <a class="nav-link active" aria-current="page" href="./contactas.html" style="color: white;">Support</a>
                         </li>
-                        
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="./questionnaire.html" style="color: white;">Feedback</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="./calculator.html" style="color: white;">Calculator</a>
+                        </li>
                         <li>
                             <a class="nav-link active" aria-current="page" href="./Aboutus.html" style="color: white;">About us</a>
                         </li>
@@ -46,38 +82,48 @@
                 </div>
             </div>
         </nav>
+
+        
         
         <div class="main-content">
-            <div class="fill ">
-                <img class="homeimg" src="Screenshot_27-10-2024_201240_.jpeg" alt="Homepage Image">
-            </div>
-        
-            <h2>Your <span style="color: red;">One-Stop</span> Shop for Quality Cars & Parts</h2>
-        
-            <div class="container ">
-                <img src="1.png" alt="Car image 1">
-                <img src="2.png" alt="Car image 2">
-                <img src="3.png" alt="Car image 3">
+            <div class="content-wrapper">
+                <div class="fill ">
+                    <img class="homeimg" src="Screenshot_27-10-2024_201240_.jpeg" alt="Homepage Image">
+                </div>
+
+                <section class="hero text-center text-white">
+                    <h1>Welcome to Our Car & Parts Store</h1>
+                    <p>Your journey to quality starts here.</p>
+                    <a href="./parts.html" class="btn btn-primary">Shop Now</a>
+                </section>
+            
+                <h2 class="text-center text-white mb-4">Your <span style="color: red;">One-Stop</span> Shop for Quality Cars & Parts</h2>
+            
+                <div class="container mb-5 text-center">
+                    <img src="1.png" alt="Car image 1" class="img-fluid mb-3">
+                    <img src="2.png" alt="Car image 2" class="img-fluid mb-3">
+                    <img src="3.png" alt="Car image 3" class="img-fluid mb-3">
+                </div>
+
+                <section class="testimonials text-center text-white">
+                    
+                </section>
             </div>
         </div>
 
-        <h1 style="color: #000a1f">s</h1>
-        <h1 style="color: #000a1f">s</h1>
-        <h1 style="color: #000a1f">s</h1>
-        
-        <footer>
-            <p>&copy; All rights reserved to KNIGHTS CREATIVITY.</p>
-            <div class="footer-links">
-                <a href="./contactas.html">Contact Us</a> | 
-                <a href="#">Terms of Service</a> | 
-                <a href="#">Privacy Policy</a> | 
-                <a href="#">Facebook</a> | 
-                <a href="#">Twitter</a> | 
-                <a href="#">Instagram</a>
-            </div>
+        <footer  style="background-color: #000000;">
+            
+                <p>&copy; 2024 KNIGHTS CREATIVITY. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="./contactas.html" class="text-white mx-2">Contact Us</a>
+                    <a href="#" class="text-white mx-2">Terms of Service</a>
+                    <a href="#" class="text-white mx-2">Privacy Policy</a>
+                    <a href="#" class="text-white mx-2"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-white mx-2"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
+                </div>
+            
         </footer>
 
-        
-        
-        </body>
+    </body>
 </html>

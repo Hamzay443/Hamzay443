@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parts Calculator</title>
+    <link href="partsStyle.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+        }
+
+        .calculator-container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: white;
+            flex: 1;
+        }
+        .part-selection {
+            margin-bottom: 15px;
+        }
+
+        footer {
+            background-color: #000000;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: auto;
+        }
+
+        .form-check {
+            display: grid !important;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .form-check-label {
+            margin-right: auto;
+        }
+
+        .form-check input[type="number"] {
+            width: 80px;
+            margin-left: auto;
+        }
+    </style>
+</head>
+<body style="background-color: #000a1f;">
+    <!-- Reuse your existing navbar -->
+    <nav class="navbar navbar-dark navbar-expand-sm" style="background-color: #000000;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="Screenshot_27-10-2024_201240_.jpeg" alt="Logo" width="100" height="30" class="d-inline-block align-text-top">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active " aria-current="page" href="./index.html" style="color: white;">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active " aria-current="page" href="./parts.html" style="color: white;">Parts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active " aria-current="page" href="./auc.html" style="color: white;">Auctions</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="./contactas.html" style="color: white;">Support</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="./questionnaire.html" style="color: white;">Feedback</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="./calculator.html" style="color: white;">Calculator</a>
+              </li>
+                
+                <li>
+                    <a class="nav-link active " aria-current="page" href="./Aboutus.html" style="color: white;">About us</a>
+                </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                  </form>
+            </div>
+        </div>
+           
+    </nav>
+
+
+    <div class="calculator-container">
+        <h2 class="text-center mb-4">Parts Calculator</h2>
+        
+        <div class="part-selection">
+            <h4>Select Parts</h4>
+            <div class="form-check d-flex align-items-center gap-2">
+                <input class="form-check-input" type="checkbox" id="oilFilter" value="25">
+                <label class="form-check-label" for="oilFilter">Oil Filter ($25)</label>
+                <input type="number" class="form-control form-control-sm" id="oilFilter-qty" value="1" min="1" style="width: 70px;" disabled>
+            </div>
+            <div class="form-check d-flex align-items-center gap-2">
+                <input class="form-check-input" type="checkbox" id="sparkPlugs" value="40">
+                <label class="form-check-label" for="sparkPlugs">Spark Plugs Set ($40)</label>
+                <input type="number" class="form-control form-control-sm" id="sparkPlugs-qty" value="1" min="1" style="width: 70px;" disabled>
+            </div>
+            <div class="form-check d-flex align-items-center gap-2">
+                <input class="form-check-input" type="checkbox" id="shockAbsorber" value="120">
+                <label class="form-check-label" for="shockAbsorber">Shock Absorber ($120)</label>
+                <input type="number" class="form-control form-control-sm" id="shockAbsorber-qty" value="1" min="1" style="width: 70px;" disabled>
+            </div>
+            <div class="form-check d-flex align-items-center gap-2">
+                <input class="form-check-input" type="checkbox" id="brakeDisc" value="40">
+                <label class="form-check-label" for="brakeDisc">Brake Disc ($40)</label>
+                <input type="number" class="form-control form-control-sm" id="brakeDisc-qty" value="1" min="1" style="width: 70px;" disabled>
+            </div>
+            <div class="form-check d-flex align-items-center gap-2">
+                <input class="form-check-input" type="checkbox" id="brakePads" value="45">
+                <label class="form-check-label" for="brakePads">Brake Pads ($45)</label>
+                <input type="number" class="form-control form-control-sm" id="brakePads-qty" value="1" min="1" style="width: 70px;" disabled>
+            </div>
+            <div class="form-check d-flex align-items-center gap-2">
+                <input class="form-check-input" type="checkbox" id="airFilter" value="30">
+                <label class="form-check-label" for="airFilter">Air Filter ($30)</label>
+                <input type="number" class="form-control form-control-sm" id="airFilter-qty" value="1" min="1" style="width: 70px;" disabled>
+            </div>
+            <div class="form-check d-flex align-items-center gap-2">
+                <input class="form-check-input" type="checkbox" id="batteryNew" value="150">
+                <label class="form-check-label" for="batteryNew">Car Battery ($150)</label>
+                <input type="number" class="form-control form-control-sm" id="batteryNew-qty" value="1" min="1" style="width: 70px;" disabled>
+            </div>
+            <div class="form-check d-flex align-items-center gap-2">
+                <input class="form-check-input" type="checkbox" id="radiator" value="200">
+                <label class="form-check-label" for="radiator">Radiator ($200)</label>
+                <input type="number" class="form-control form-control-sm" id="radiator-qty" value="1" min="1" style="width: 70px;" disabled>
+            </div>
+            <div class="form-check d-flex align-items-center gap-2">
+                <input class="form-check-input" type="checkbox" id="alternator" value="180">
+                <label class="form-check-label" for="alternator">Alternator ($180)</label>
+                <input type="number" class="form-control form-control-sm" id="alternator-qty" value="1" min="1" style="width: 70px;" disabled>
+            </div>
+            <div class="form-check d-flex align-items-center gap-2">
+                <input class="form-check-input" type="checkbox" id="fuelPump" value="95">
+                <label class="form-check-label" for="fuelPump">Fuel Pump ($95)</label>
+                <input type="number" class="form-control form-control-sm" id="fuelPump-qty" value="1" min="1" style="width: 70px;" disabled>
+            </div>
+            <div class="form-check d-flex align-items-center gap-2">
+                <input class="form-check-input" type="checkbox" id="timingBelt" value="70">
+                <label class="form-check-label" for="timingBelt">Timing Belt ($70)</label>
+                <input type="number" class="form-control form-control-sm" id="timingBelt-qty" value="1" min="1" style="width: 70px;" disabled>
+            </div>
+            <div class="form-check d-flex align-items-center gap-2">
+                <input class="form-check-input" type="checkbox" id="wiperBlade" value="65">
+                <label class="form-check-label" for="wiperBlade">wiperBlade ($65)</label>
+                <input type="number" class="form-control form-control-sm" id="wiperBlade-qty" value="1" min="1" style="width: 70px;" disabled>
+            </div>
+        </div>
+
+        <div class="customer-info mb-3">
+            <h4>Customer Information</h4>
+            <div class="mb-3">
+                <label for="customerAge" class="form-label">Age</label>
+                <input type="number" class="form-control" id="customerAge">
+            </div>
+            <div class="mb-3">
+                <label for="membershipType" class="form-label">Membership Type</label>
+                <select class="form-select" id="membershipType">
+                    <option value="regular">Regular Customer</option>
+                    <option value="silver">Silver Member</option>
+                    <option value="gold">Gold Member</option>
+                </select>
+            </div>
+        </div>
+
+        <button class="btn btn-primary" onclick="calculateTotal()">Calculate Total</button>
+        
+        <div class="result mt-4">
+            <h4>Bill Summary</h4>
+            <div id="billSummary"></div>
+        </div>
+    </div>
+
+    <script>
+        // Add this at the start of your script section
+        window.onload = function() {
+            // Get URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const partToSelect = urlParams.get('part');
+            
+            // If a part was specified in the URL, select it
+            if (partToSelect) {
+                const checkbox = document.getElementById(partToSelect);
+                if (checkbox) {
+                    checkbox.checked = true;
+                    // Enable the quantity input
+                    const qtyInput = document.getElementById(`${partToSelect}-qty`);
+                    if (qtyInput) {
+                        qtyInput.disabled = false;
+                    }
+                    // Automatically scroll to the calculator section
+                    document.querySelector('.calculator-container').scrollIntoView({ 
+                        behavior: 'smooth' 
+                    });
+                }
+            }
+        }
+
+        // Add event listeners to checkboxes to enable/disable quantity inputs
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const qtyInput = document.getElementById(`${this.id}-qty`);
+                qtyInput.disabled = !this.checked;
+            });
+        });
+
+        function calculateTotal() {
+            // Get all selected parts
+            let subtotal = 0;
+            const selectedParts = document.querySelectorAll('input[type="checkbox"]:checked');
+            
+            // Calculate subtotal with quantities
+            selectedParts.forEach(part => {
+                const quantity = parseInt(document.getElementById(`${part.id}-qty`).value) || 1;
+                subtotal += parseFloat(part.value) * quantity;
+            });
+
+            // Get customer age and membership type
+            const age = parseInt(document.getElementById('customerAge').value);
+            const membershipType = document.getElementById('membershipType').value;
+
+            // Initialize discount
+            let discount = 0;
+            let discountMessage = "";
+
+            // Apply senior citizen discount (10% for customers over 60)
+            if (age >= 60) {
+                discount += 0.10;
+                discountMessage += "Senior Citizen Discount (10%)<br>";
+            }
+
+            // Apply membership discounts
+            switch(membershipType) {
+                case 'gold':
+                    discount += 0.15;
+                    discountMessage += "Gold Member Discount (15%)<br>";
+                    break;
+                case 'silver':
+                    discount += 0.10;
+                    discountMessage += "Silver Member Discount (10%)<br>";
+                    break;
+                default:
+                    // No additional discount for regular customers
+                    break;
+            }
+
+            // Calculate final total
+            const totalDiscount = subtotal * discount;
+            const finalTotal = subtotal - totalDiscount;
+
+            // Display the bill summary
+            const summaryHTML = `
+                <p>Subtotal: $${subtotal.toFixed(2)}</p>
+                ${discountMessage}
+                <p>Total Discount: $${totalDiscount.toFixed(2)}</p>
+                <h5>Final Total: $${finalTotal.toFixed(2)}</h5>
+            `;
+
+            document.getElementById('billSummary').innerHTML = summaryHTML;
+        }
+    </script>
+
+    <!-- Add your existing footer here -->
+    <footer>
+        <p>&copy; All rights reserved to KNIGHTS CREATIVITY.</p>
+        <div class="footer-links">
+          <a href="./contactas.html">Contact Us</a> | 
+            <a href="#">Terms of Service</a> | 
+            <a href="#">Privacy Policy</a> | 
+            <a href="#">Facebook</a> | 
+            <a href="#">Twitter</a> | 
+            <a href="#">Instagram</a>
+        </div>
+    </footer>
+
+</body>
+</html>
