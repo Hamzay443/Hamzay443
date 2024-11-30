@@ -1,0 +1,150 @@
+<html>
+		<head>
+			<title>Word Scramble Game</title>
+				<style>
+					body {
+						font-family: Arial, sans-serif;
+						background-color: white;
+						text-align: center;
+						margin: 0;
+						padding: 0;
+					}
+
+					h1 {
+						color: black;
+					}
+
+					p {
+						font-size: 18px;
+						color: grey;
+					}
+
+					#scrambledWords {
+						margin-top: 20px;
+					}
+
+					#scrambledWords span {
+						padding: 10px;
+						margin: 5px;
+						background-color:whitesmoke;
+						cursor: pointer;
+						display: inline-block;
+					}
+
+					#sentenceBox {
+						padding: 20px;
+						margin-top: 20px;
+						min-height: 50px;
+						background-color: white;
+						border: 2px dashed whitesmoke;
+						display: inline-block;
+						width: 80%;
+					}
+
+					#sentenceBox span {
+						margin: 5px;
+						background-color: white;
+						padding: 5px 10px;
+						border-radius: 5px;
+						cursor: move;
+					}
+
+					button {
+						padding: 10px 20px;
+						margin-top: 20px;
+						background-color: green;
+						color: white;
+						cursor: pointer;
+					}
+
+					button:hover {
+						background-color: green;
+					}
+
+					#result {
+						margin-top: 20px;
+						font-size: 18px;
+						font-weight: bold;
+					}
+				</style>
+		</head>
+	<body>
+
+		<h1>Word Scramble: Knight's Creativity</h1>
+		<p>Drag and drop the words to make a full  sentence</p>
+
+			<div id="scrambledWords">
+				<span id="word1" draggable="true">engine</span>
+				<span id="word2" draggable="true">is</span>
+				<span id="word3" draggable="true">the</span>
+				<span id="word4" draggable="true">important</span>
+			</div>
+
+			<div id="sentenceFormation">
+				<p>Form a sentence:</p>
+				<div id="sentenceBox"></div>
+			</div>
+
+			<button onclick="checkSentence()">Check Sentence</button>
+			<p id="result"></p>
+
+		<script>
+			//Correct sentence in order
+			let Corrsentence = ['the', 'engine', 'is', 'important'];
+
+			//Empty List
+			let userSentence = [];
+
+			//Drag-and-drop
+			var words = document.querySelectorAll('#scrambledWords span'); //Select all span elements within scrambledWords
+			for (var i = 0; i < words.length; i++) {
+				var word = words[i]; //Get the current word
+
+				word.addEventListener('dragstart', dragStart); //Add the dragstart event listener to each word
+			}
+
+			//Function triggered when a word starts being dragged
+			function dragStart(event) {
+				event.dataTransfer.setData('text', event.target.id); // Set the word's ID to be dragged
+			}
+
+			// Allow dropping the word into the sentence box
+			document.getElementById('sentenceBox').addEventListener('dragover', dragOver);
+			document.getElementById('sentenceBox').addEventListener('drop', dropWord);
+
+			// Prevent default behavior to allow drop
+			function dragOver(event) {
+				event.preventDefault();
+			}
+
+			// Function to handle the word drop into the sentence box
+			function dropWord(event) {
+				event.preventDefault(); //Prevent the default behavior
+				var wordId = event.dataTransfer.getData('text'); //Get the ID of the dragged word
+				var wordElement = document.getElementById(wordId); //Get the element using its ID
+				userSentence.push(wordElement.textContent); //Add the text content of the word to the userSentence array
+				updateSentenceBox(); //Call the function to update the sentence box display
+				}
+
+
+			//Function to update the sentence box with words
+			function updateSentenceBox() {
+				var sentenceBox = document.getElementById('sentenceBox');
+				sentenceBox.innerHTML = '';
+				for (var i = 0; i < userSentence.length; i++) {
+					var word = userSentence[i]; // Get the current word
+					var wordSpan = document.createElement('span'); // Create a new span element
+					wordSpan.textContent = word; // Set the text content of the span
+					sentenceBox.appendChild(wordSpan); // Append the span to the sentence box
+				}
+			}
+
+
+			// Check if the statement is correct
+			function checkSentence() {
+				if (userSentence.join(' ') === sentence.join(' ')) {document.getElementById('result').textContent = 'Correct! Well done.';} 
+				else {document.getElementById('result').textContent = 'Try again!';}
+			}
+		</script>
+	</body>
+</html>
