@@ -137,30 +137,33 @@ i{
 
 
     <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="info-box">
-                    <i class="fas fa-envelope info-icon"></i>
-                    <h4 class="custom-heading">Email Us</h4>
-                    <p class="custom-heading">KnightCreativity@gmail.com</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="info-box">
-                    <i class="fas fa-phone-alt info-icon"></i>
-                    <h4 class="custom-heading">Call Us</h4>
-                    <p class="custom-heading">(+968) 95999959</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="info-box">
-                    <i class="fas fa-map-marker-alt info-icon"></i>
-                    <h4 class="custom-heading">Visit Us</h4>
-                    <p class="custom-heading"> 123 road street </p>
-                </div>
-            </div>
+        <!-- Search form for contacts -->
+        <div class="mb-3">
+            <input type="text" id="contactSearch" class="form-control" placeholder="Search contacts...">
+            <button onclick="searchContacts()" class="btn btn-primary mt-2">Search</button>
         </div>
 
+        <!-- Empty row for cards -->
+        <div class="row" id="contactInfoContainer">
+        </div>
+
+        <!-- Add table view -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <h2 class="custom-heading mb-3">Contact Information Table</h2>
+                <table class="table table-dark table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Type</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Contact Details</th>
+                        </tr>
+                    </thead>
+                    <tbody id="contactTableBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
         <div class="message-box">
             <h2 class="custom-heading">Send a Message</h2>
@@ -203,5 +206,57 @@ i{
         <a href="#">Instagram</a>
     </div>
 </footer>
+
+<!-- Add before closing body tag -->
+<script src="scripts.js"></script>
+<script>
+    // Function to populate contact info cards
+    function displayContacts(contactArray) {
+        // Update cards
+        const container = document.getElementById('contactInfoContainer');
+        container.innerHTML = '';
+        
+        contactArray.forEach(contact => {
+            const div = document.createElement('div');
+            div.className = 'col-md-4';
+            div.innerHTML = `
+                <div class="info-box">
+                    <i class="${contact.icon} info-icon"></i>
+                    <h4 class="custom-heading">${contact.title}</h4>
+                    <p class="custom-heading">${contact.value}</p>
+                </div>
+            `;
+            container.appendChild(div);
+        });
+
+        // Update table
+        const tableBody = document.getElementById('contactTableBody');
+        tableBody.innerHTML = '';
+
+        contactArray.forEach(contact => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td><i class="${contact.icon}"></i> ${contact.type}</td>
+                <td>${contact.title}</td>
+                <td>${contact.value}</td>
+            `;
+            tableBody.appendChild(row);
+        });
+    }
+
+    // Search function
+    function searchContacts() {
+        const searchTerm = document.getElementById('contactSearch').value.toLowerCase();
+        const filteredContacts = contactDetails.filter(contact => 
+            contact.title.toLowerCase().includes(searchTerm) ||
+            contact.value.toLowerCase().includes(searchTerm) ||
+            contact.type.toLowerCase().includes(searchTerm)
+        );
+        displayContacts(filteredContacts);
+    }
+
+    // Initial display
+    displayContacts(contactDetails);
+</script>
 </body>
 </html>

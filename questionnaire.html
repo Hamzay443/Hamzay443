@@ -136,53 +136,66 @@
     </div>
 
     <script>
-        
-        const form = document.getElementById('feedbackForm');
-        const emailInput = document.getElementById('email');
-        const phoneInput = document.getElementById('phoneNumber');
-        const feedbackText = document.getElementById('feedback');
-
-        
+        // Get references to form elements
+        const form = document.getElementById('feedbackForm'); // Feedback form element
+        const emailInput = document.getElementById('email'); // Email input field
+        const phoneInput = document.getElementById('phoneNumber'); // Phone number input field
+        const feedbackText = document.getElementById('feedback'); // Feedback textarea
+    
+        // Regular expression to validate email format
         const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-        
-        const phoneRegex = /^(\+\d{1,3}[-.]?)?\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-
+    
+        // Regular expression to validate phone number format
+        const phoneRegex = /^\d{4}[-\s]?\d{4}$/;
+    
+        // Add an event listener to handle form submission
         form.addEventListener('submit', function(event) {
+            // Prevent the default form submission behavior
             event.preventDefault();
+    
+            // Initialize a validity flag
             let isValid = true;
-
-            
+    
+            // Validate email input
             if (!emailRegex.test(emailInput.value)) {
+                // Display an error message if the email is invalid
                 document.getElementById('emailError').textContent = 'Please enter a valid email address';
                 document.getElementById('emailError').style.display = 'block';
-                isValid = false;
+                isValid = false; // Mark form as invalid
             } else {
+                // Hide the error message if the email is valid
                 document.getElementById('emailError').style.display = 'none';
             }
-
-            
+    
+            // Validate phone number input
             if (!phoneRegex.test(phoneInput.value)) {
+                // Display an error message if the phone number is invalid
                 document.getElementById('phoneError').textContent = 'Please enter a valid phone number';
                 document.getElementById('phoneError').style.display = 'block';
-                isValid = false;
+                isValid = false; // Mark form as invalid
             } else {
+                // Hide the error message if the phone number is valid
                 document.getElementById('phoneError').style.display = 'none';
             }
-
-            
+    
+            // Validate feedback text input
             if (feedbackText.value.length < 20) {
+                // Display an error message if feedback is too short
                 document.getElementById('feedbackError').textContent = 'Please provide detailed feedback (minimum 20 characters)';
                 document.getElementById('feedbackError').style.display = 'block';
-                isValid = false;
+                isValid = false; // Mark form as invalid
             } else {
+                // Hide the error message if feedback is sufficient
                 document.getElementById('feedbackError').style.display = 'none';
             }
-
+    
+            // If all fields are valid, show a success message and reset the form
             if (isValid) {
-                alert('Thank you for your feedback!');
-                form.reset();
+                alert('Thank you for your feedback!'); // Notify the user of successful submission
+                form.reset(); // Clear all form fields
             }
         });
     </script>
+    
 </body>
 </html> 

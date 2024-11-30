@@ -73,27 +73,6 @@ nav ul li a:hover{
 
 
 
-
-
-
-
-table {
-    background-color: transparent;
-    width: 6px;
-    border-collapse: collapse;
-    text-align: center;
-    
-    
-    
-}
-
-
-
-
-
-
-
-
 footer {
     flex-shrink: 0;
     margin-top: auto;

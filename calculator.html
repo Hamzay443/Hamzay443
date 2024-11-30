@@ -192,95 +192,112 @@
     </div>
 
     <script>
-        // Add this at the start of your script section
+        // Execute the function once the window has fully loaded
         window.onload = function() {
-            // Get URL parameters
+            // Retrieve URL parameters
             const urlParams = new URLSearchParams(window.location.search);
+    
+            // Get the value of the 'part' parameter from the URL
             const partToSelect = urlParams.get('part');
             
-            // If a part was specified in the URL, select it
+            // If a specific part is specified in the URL
             if (partToSelect) {
+                // Find the checkbox corresponding to the part
                 const checkbox = document.getElementById(partToSelect);
                 if (checkbox) {
+                    // Check the checkbox
                     checkbox.checked = true;
-                    // Enable the quantity input
+    
+                    // Enable the corresponding quantity input field
                     const qtyInput = document.getElementById(`${partToSelect}-qty`);
                     if (qtyInput) {
                         qtyInput.disabled = false;
                     }
+    
                     // Automatically scroll to the calculator section
                     document.querySelector('.calculator-container').scrollIntoView({ 
-                        behavior: 'smooth' 
+                        behavior: 'smooth' // Smooth scrolling effect
                     });
                 }
             }
-        }
-
-        // Add event listeners to checkboxes to enable/disable quantity inputs
+        };
+    
+        // Add event listeners to all checkboxes
         document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
             checkbox.addEventListener('change', function() {
+                // Get the corresponding quantity input field
                 const qtyInput = document.getElementById(`${this.id}-qty`);
+    
+                // Enable or disable the input based on the checkbox state
                 qtyInput.disabled = !this.checked;
             });
         });
-
+    
+        // Function to calculate the total bill
         function calculateTotal() {
-            // Get all selected parts
+            // Initialize subtotal to 0
             let subtotal = 0;
+    
+            // Get all checkboxes that are checked
             const selectedParts = document.querySelectorAll('input[type="checkbox"]:checked');
-            
-            // Calculate subtotal with quantities
+    
+            // Loop through selected parts and calculate their cost
             selectedParts.forEach(part => {
+                // Get the quantity value, defaulting to 1 if it's empty or invalid
                 const quantity = parseInt(document.getElementById(`${part.id}-qty`).value) || 1;
+    
+                // Multiply the part's value (price) by the quantity and add to the subtotal
                 subtotal += parseFloat(part.value) * quantity;
             });
-
-            // Get customer age and membership type
-            const age = parseInt(document.getElementById('customerAge').value);
-            const membershipType = document.getElementById('membershipType').value;
-
-            // Initialize discount
+    
+            // Get customer details for calculating discounts
+            const age = parseInt(document.getElementById('customerAge').value); // Customer's age
+            const membershipType = document.getElementById('membershipType').value; // Membership type
+    
+            // Initialize discount and discount message
             let discount = 0;
             let discountMessage = "";
-
-            // Apply senior citizen discount (10% for customers over 60)
+    
+            // Apply a 10% discount if the customer is a senior citizen (age 60 or above)
             if (age >= 60) {
                 discount += 0.10;
                 discountMessage += "Senior Citizen Discount (10%)<br>";
             }
-
-            // Apply membership discounts
-            switch(membershipType) {
-                case 'gold':
+    
+            // Apply additional discounts based on membership type
+            switch (membershipType) {
+                case 'gold': // 15% discount for gold members
                     discount += 0.15;
                     discountMessage += "Gold Member Discount (15%)<br>";
                     break;
-                case 'silver':
+                case 'silver': // 10% discount for silver members
                     discount += 0.10;
                     discountMessage += "Silver Member Discount (10%)<br>";
                     break;
                 default:
-                    // No additional discount for regular customers
+                    // No discount for regular customers
                     break;
             }
-
-            // Calculate final total
-            const totalDiscount = subtotal * discount;
-            const finalTotal = subtotal - totalDiscount;
-
-            // Display the bill summary
+    
+            // Calculate total discount and final total
+            const totalDiscount = subtotal * discount; // Discount amount
+            const finalTotal = subtotal - totalDiscount; // Total after applying discount
+    
+            // Generate a summary of the bill
             const summaryHTML = `
                 <p>Subtotal: $${subtotal.toFixed(2)}</p>
-                ${discountMessage}
+                ${discountMessage} <!-- Display all applicable discounts -->
                 <p>Total Discount: $${totalDiscount.toFixed(2)}</p>
                 <h5>Final Total: $${finalTotal.toFixed(2)}</h5>
             `;
-
+    
+            // Display the summary in the 'billSummary' element
             document.getElementById('billSummary').innerHTML = summaryHTML;
         }
     </script>
+    
 
-    <!-- Add your existing footer here -->
+   
     <footer>
         <p>&copy; All rights reserved to KNIGHTS CREATIVITY.</p>
         <div class="footer-links">

@@ -1,0 +1,236 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Scramble Game</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000a1f;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        p {
+            font-size: 18px;
+            color: #cccccc;
+        }
+
+        #scrambledWords {
+            margin-top: 20px;
+        }
+
+        #scrambledWords span {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: rgba(227, 232, 255, 0.1);
+            color: white;
+            cursor: pointer;
+            display: inline-block;
+            border-radius: 5px;
+            transition: all 0.2s;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        #scrambledWords span:hover {
+            transform: scale(1.05);
+            background-color: rgba(227, 232, 255, 0.2);
+        }
+
+        #sentenceBox {
+            padding: 20px;
+            margin-top: 20px;
+            min-height: 80px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            display: inline-block;
+            width: 80%;
+            border-radius: 8px;
+        }
+
+        #sentenceBox span {
+            margin: 5px;
+            background-color: rgba(227, 232, 255, 0.1);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        #sentenceBox span:hover {
+            background-color: rgba(255, 153, 153, 0.3);
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            margin: 10px;
+            font-size: 16px;
+            transition: all 0.2s;
+            color: white !important;
+            cursor: pointer;
+        }
+
+        
+
+        .btn:hover {
+            transform: scale(1.05);
+            opacity: 1 !important;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+        }
+
+        footer {
+            background-color: #000000;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: auto;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+
+    
+
+    <div class="container">
+        
+        <a href="index.html" class="btn btn-return">
+            <i class='bx bx-arrow-back'></i> Return Home
+        </a>
+        <h1>Word Scramble: Knight's Creativity</h1>
+        <p>Drag and drop the words to make a full sentence</p>
+
+        <div id="scrambledWords">
+            <span id="word1" draggable="true">engine</span>
+            <span id="word2" draggable="true">is</span>
+            <span id="word3" draggable="true">the</span>
+            <span id="word4" draggable="true">important</span>
+        </div>
+
+        <div id="sentenceFormation">
+            <p>Form a sentence:</p>
+            <div id="sentenceBox"></div>
+        </div>
+
+        <div class="button-container">
+            <button class="btn btn-success" onclick="checkSentence()">Check Sentence</button>
+            <button class="btn btn-danger" onclick="resetGame()">Reset Game</button>
+        </div>
+        
+        <p id="result"></p>
+    </div>
+
+    <!-- Add your footer here (copy from index.html) -->
+    
+
+    <!-- Your existing JavaScript code remains the same -->
+    <script>
+        // Correct sentence in order
+        let correctSentence = ['the', 'engine', 'is', 'important'];
+
+        // Empty List
+        let userSentence = [];
+
+        // Drag-and-drop
+        var words = document.querySelectorAll('#scrambledWords span'); // Select all span elements within scrambledWords
+        for (var i = 0; i < words.length; i++) {
+            var word = words[i]; // Get the current word
+
+            word.addEventListener('dragstart', dragStart); // Add the dragstart event listener to each word
+        }
+
+        // Function triggered when a word starts being dragged
+        function dragStart(event) {
+            event.dataTransfer.setData('text', event.target.id); // Set the word's ID to be dragged
+        }
+
+        // Allow dropping the word into the sentence box
+        document.getElementById('sentenceBox').addEventListener('dragover', dragOver);
+        document.getElementById('sentenceBox').addEventListener('drop', dropWord);
+
+        // Prevent default behavior to allow drop
+        function dragOver(event) {
+            event.preventDefault();
+        }
+
+        // Function to handle the word drop into the sentence box
+        function dropWord(event) {
+            event.preventDefault(); // Prevent the default behavior
+            var wordId = event.dataTransfer.getData('text'); // Get the ID of the dragged word
+            var wordElement = document.getElementById(wordId); // Get the element using its ID
+            userSentence.push(wordElement.textContent); // Add the text content of the word to the userSentence array
+            updateSentenceBox(); // Call the function to update the sentence box display
+        }
+
+        // Function to update the sentence box with words
+        function updateSentenceBox() {
+            var sentenceBox = document.getElementById('sentenceBox');
+            sentenceBox.innerHTML = '';
+            for (var i = 0; i < userSentence.length; i++) {
+                var word = userSentence[i];
+                var wordSpan = document.createElement('span');
+                wordSpan.textContent = word;
+                wordSpan.onclick = function() {
+                    const index = userSentence.indexOf(this.textContent);
+                    userSentence.splice(index, 1);
+                    updateSentenceBox();
+                };
+                sentenceBox.appendChild(wordSpan);
+            }
+        }
+
+        // Check if the statement is correct
+        function checkSentence() {
+            if (userSentence.join(' ') === correctSentence.join(' ')) {
+                document.getElementById('result').textContent = 'Correct! Well done! 🎉';
+                document.getElementById('result').style.color = '#4CAF50';
+            } else {
+                document.getElementById('result').textContent = 'Try again! 😊';
+                document.getElementById('result').style.color = '#f44336';
+            }
+        }
+
+        // Add reset function
+        function resetGame() {
+            userSentence = [];
+            updateSentenceBox();
+            document.getElementById('result').textContent = '';
+        }
+    </script>
+</body>
+</html>
