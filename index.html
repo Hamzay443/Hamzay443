@@ -25,7 +25,6 @@
                 flex: 1;
                 display: flex;
                 flex-direction: column;
-                min-height: calc(100vh - 60px);
             }
             .hero, .testimonials {
                 padding: 50px 0;
@@ -192,6 +191,17 @@
                     height: 300px;
                 }
             }
+
+            footer {
+                width: 100%;
+                padding: 20px 0;
+                text-align: center;
+                color: white;
+            }
+
+            .footer-links {
+                margin-top: 10px;
+            }
         </style>
 
     </head>
@@ -263,50 +273,50 @@
                     
                 </section>
 
-                
-                
+                <div class="gallery-section">
+                    <h2 class="text-center text-white mb-4">Photo Gallery</h2>
+                    <div class="gallery-container">
+                        <div class="gallery-track">
+                            <div class="gallery-slide active">
+                                <img src="audi.avif" alt="Gallery Image 1">
+                            </div>
+                            <div class="gallery-slide">
+                                <img src="bmw.jpg" alt="Gallery Image 2">
+                            </div>
+                            <div class="gallery-slide">
+                                <img src="lexus2.jpg" alt="Gallery Image 3">
+                            </div>
+                        </div>
+                        
+                        <button class="gallery-btn prev-btn">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="gallery-btn next-btn">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        
+                        <div class="gallery-dots"></div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
-        <div class="gallery-section">
-            <h2 class="text-center text-white mb-4">Photo Gallery</h2>
-            <div class="gallery-container">
-                <div class="gallery-track">
-                    <div class="gallery-slide active">
-                        <img src="audi.avif" alt="Gallery Image 1">
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="bmw.jpg" alt="Gallery Image 2">
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="lexus2.jpg" alt="Gallery Image 3">
-                    </div>
-                </div>
-                
-                <button class="gallery-btn prev-btn">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="gallery-btn next-btn">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-                
-                <div class="gallery-dots"></div>
+        <footer style="background-color: #000000;">
+            <p>&copy; 2024 KNIGHTS CREATIVITY. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="./contactas.html" class="text-white mx-2">Contact Us</a>
+                <a href="#" class="text-white mx-2">Terms of Service</a>
+                <a href="#" class="text-white mx-2">Privacy Policy</a>
+                <a href="#" class="text-white mx-2"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="text-white mx-2"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
             </div>
-        </div>
-
-        <footer  style="background-color: #000000;">
-            
-                <p>&copy; 2024 KNIGHTS CREATIVITY. All rights reserved.</p>
-                <div class="footer-links">
-                    <a href="./contactas.html" class="text-white mx-2">Contact Us</a>
-                    <a href="#" class="text-white mx-2">Terms of Service</a>
-                    <a href="#" class="text-white mx-2">Privacy Policy</a>
-                    <a href="#" class="text-white mx-2"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="text-white mx-2"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
-                </div>
-            
         </footer>
+
+        
+
+        
         
         <script>
             // Define a Gallery class to manage the functionality of an image gallery
