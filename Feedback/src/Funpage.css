@@ -1,0 +1,99 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000a1f;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 2rem auto;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  h1 {
+    color: white;
+    margin-bottom: 1.5rem;
+  }
+  
+  p {
+    font-size: 18px;
+    color: #cccccc;
+  }
+  
+  #scrambledWords {
+    margin-top: 20px;
+  }
+  
+  #scrambledWords span {
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: rgba(227, 232, 255, 0.1);
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 5px;
+    transition: all 0.2s;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  #scrambledWords span:hover {
+    transform: scale(1.05);
+    background-color: rgba(227, 232, 255, 0.2);
+  }
+  
+  #sentenceBox {
+    padding: 20px;
+    margin-top: 20px;
+    min-height: 80px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 2px dashed rgba(255, 255, 255, 0.2);
+    display: inline-block;
+    width: 80%;
+    border-radius: 8px;
+  }
+  
+  #sentenceBox span {
+    margin: 5px;
+    background-color: rgba(227, 232, 255, 0.1);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  #sentenceBox span:hover {
+    background-color: rgba(255, 153, 153, 0.3);
+  }
+  
+  .btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    font-size: 16px;
+    transition: all 0.2s;
+    color: white;
+    background-color: #4CAF50;
+    cursor: pointer;
+  }
+  
+  .btn:hover {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  
+  #result {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+  }
