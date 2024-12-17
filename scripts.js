@@ -13,6 +13,15 @@ function ContactInfo(type, title, value, icon) {
     this.icon = icon;
 }
 
+Milestone.prototype.setYear = function(year) {
+    this.year = year;
+};
+
+Milestone.prototype.getYear = function() {
+    return this.year;
+};
+
+
 // Initialize arrays with data
 const milestones = [
     new Milestone(2015, "Founded", "The beginning of our journey to simplify car services."),

@@ -105,87 +105,41 @@
     <div class="calculator-container">
         <h2 class="text-center mb-4">Parts Calculator</h2>
         
-        <div class="part-selection">
-            <h4>Select Parts</h4>
-            <div class="form-check d-flex align-items-center gap-2">
-                <input class="form-check-input" type="checkbox" id="oilFilter" value="25">
-                <label class="form-check-label" for="oilFilter">Oil Filter ($25)</label>
-                <input type="number" class="form-control form-control-sm" id="oilFilter-qty" value="1" min="1" style="width: 70px;" disabled>
+        <form action="calculator.php" method="POST">
+            <div class="part-selection">
+                <h4>Select Parts</h4>
+                <div class="form-check d-flex align-items-center gap-2">
+                    <input class="form-check-input" type="checkbox" name="selectedParts[]" value="oilFilter" id="oilFilter">
+                    <label class="form-check-label" for="oilFilter">Oil Filter ($25)</label>
+                    <input type="number" class="form-control form-control-sm" name="quantities[]" id="oilFilter-qty" value="1" min="1" style="width: 70px;">
+                </div>
+                <div class="form-check d-flex align-items-center gap-2">
+                    <input class="form-check-input" type="checkbox" name="selectedParts[]" value="sparkPlugs" id="sparkPlugs">
+                    <label class="form-check-label" for="sparkPlugs">Spark Plugs Set ($40)</label>
+                    <input type="number" class="form-control form-control-sm" name="quantities[]" id="sparkPlugs-qty" value="1" min="1" style="width: 70px;">
+                </div>
+                <!-- Add similar inputs for all other parts -->
+        
             </div>
-            <div class="form-check d-flex align-items-center gap-2">
-                <input class="form-check-input" type="checkbox" id="sparkPlugs" value="40">
-                <label class="form-check-label" for="sparkPlugs">Spark Plugs Set ($40)</label>
-                <input type="number" class="form-control form-control-sm" id="sparkPlugs-qty" value="1" min="1" style="width: 70px;" disabled>
+        
+            <div class="customer-info mb-3">
+                <h4>Customer Information</h4>
+                <div class="mb-3">
+                    <label for="customerAge" class="form-label">Age</label>
+                    <input type="number" class="form-control" name="customerAge" id="customerAge">
+                </div>
+                <div class="mb-3">
+                    <label for="membershipType" class="form-label">Membership Type</label>
+                    <select class="form-select" name="membershipType" id="membershipType">
+                        <option value="regular">Regular Customer</option>
+                        <option value="silver">Silver Member</option>
+                        <option value="gold">Gold Member</option>
+                    </select>
+                </div>
             </div>
-            <div class="form-check d-flex align-items-center gap-2">
-                <input class="form-check-input" type="checkbox" id="shockAbsorber" value="120">
-                <label class="form-check-label" for="shockAbsorber">Shock Absorber ($120)</label>
-                <input type="number" class="form-control form-control-sm" id="shockAbsorber-qty" value="1" min="1" style="width: 70px;" disabled>
-            </div>
-            <div class="form-check d-flex align-items-center gap-2">
-                <input class="form-check-input" type="checkbox" id="brakeDisc" value="40">
-                <label class="form-check-label" for="brakeDisc">Brake Disc ($40)</label>
-                <input type="number" class="form-control form-control-sm" id="brakeDisc-qty" value="1" min="1" style="width: 70px;" disabled>
-            </div>
-            <div class="form-check d-flex align-items-center gap-2">
-                <input class="form-check-input" type="checkbox" id="brakePads" value="45">
-                <label class="form-check-label" for="brakePads">Brake Pads ($45)</label>
-                <input type="number" class="form-control form-control-sm" id="brakePads-qty" value="1" min="1" style="width: 70px;" disabled>
-            </div>
-            <div class="form-check d-flex align-items-center gap-2">
-                <input class="form-check-input" type="checkbox" id="airFilter" value="30">
-                <label class="form-check-label" for="airFilter">Air Filter ($30)</label>
-                <input type="number" class="form-control form-control-sm" id="airFilter-qty" value="1" min="1" style="width: 70px;" disabled>
-            </div>
-            <div class="form-check d-flex align-items-center gap-2">
-                <input class="form-check-input" type="checkbox" id="batteryNew" value="150">
-                <label class="form-check-label" for="batteryNew">Car Battery ($150)</label>
-                <input type="number" class="form-control form-control-sm" id="batteryNew-qty" value="1" min="1" style="width: 70px;" disabled>
-            </div>
-            <div class="form-check d-flex align-items-center gap-2">
-                <input class="form-check-input" type="checkbox" id="radiator" value="200">
-                <label class="form-check-label" for="radiator">Radiator ($200)</label>
-                <input type="number" class="form-control form-control-sm" id="radiator-qty" value="1" min="1" style="width: 70px;" disabled>
-            </div>
-            <div class="form-check d-flex align-items-center gap-2">
-                <input class="form-check-input" type="checkbox" id="alternator" value="180">
-                <label class="form-check-label" for="alternator">Alternator ($180)</label>
-                <input type="number" class="form-control form-control-sm" id="alternator-qty" value="1" min="1" style="width: 70px;" disabled>
-            </div>
-            <div class="form-check d-flex align-items-center gap-2">
-                <input class="form-check-input" type="checkbox" id="fuelPump" value="95">
-                <label class="form-check-label" for="fuelPump">Fuel Pump ($95)</label>
-                <input type="number" class="form-control form-control-sm" id="fuelPump-qty" value="1" min="1" style="width: 70px;" disabled>
-            </div>
-            <div class="form-check d-flex align-items-center gap-2">
-                <input class="form-check-input" type="checkbox" id="timingBelt" value="70">
-                <label class="form-check-label" for="timingBelt">Timing Belt ($70)</label>
-                <input type="number" class="form-control form-control-sm" id="timingBelt-qty" value="1" min="1" style="width: 70px;" disabled>
-            </div>
-            <div class="form-check d-flex align-items-center gap-2">
-                <input class="form-check-input" type="checkbox" id="wiperBlade" value="65">
-                <label class="form-check-label" for="wiperBlade">wiperBlade ($65)</label>
-                <input type="number" class="form-control form-control-sm" id="wiperBlade-qty" value="1" min="1" style="width: 70px;" disabled>
-            </div>
-        </div>
-
-        <div class="customer-info mb-3">
-            <h4>Customer Information</h4>
-            <div class="mb-3">
-                <label for="customerAge" class="form-label">Age</label>
-                <input type="number" class="form-control" id="customerAge">
-            </div>
-            <div class="mb-3">
-                <label for="membershipType" class="form-label">Membership Type</label>
-                <select class="form-select" id="membershipType">
-                    <option value="regular">Regular Customer</option>
-                    <option value="silver">Silver Member</option>
-                    <option value="gold">Gold Member</option>
-                </select>
-            </div>
-        </div>
-
-        <button class="btn btn-primary" onclick="calculateTotal()">Calculate Total</button>
+        
+            <button class="btn btn-primary" type="submit">Calculate Total</button>
+        </form>
         
         <div class="result mt-4">
             <h4>Bill Summary</h4>
