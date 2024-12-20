@@ -4,313 +4,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parts Calculator</title>
-    <link href="partsStyle.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            margin: 0;
+            background-color: #000a1f;
+            color: white;
         }
-
         .calculator-container {
-            max-width: 1000px;
-            margin: 30px auto;
-            padding: 20px;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
-            color: white;
-            flex: 1;
-        }
-        .part-selection {
-            margin-bottom: 15px;
-        }
-
-        footer {
-            background-color: #000000;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-            margin-top: auto;
-        }
-
-        .form-check {
-            display: grid !important;
-            grid-template-columns: auto 1fr auto;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 8px;
-        }
-
-        .form-check-label {
-            margin-right: auto;
-        }
-
-        .form-check input[type="number"] {
-            width: 80px;
-            margin-left: auto;
         }
     </style>
 </head>
-<body style="background-color: #000a1f;">
-    <nav class="navbar navbar-dark navbar-expand-sm" style="background-color: #000000;">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="Screenshot_27-10-2024_201240_.jpeg" alt="Logo" width="100" height="30" class="d-inline-block align-text-top">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active " aria-current="page" href="./index.html" style="color: white;">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active " aria-current="page" href="./parts.html" style="color: white;">Parts</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active " aria-current="page" href="./auc.html" style="color: white;">Auctions</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="./contactas.html" style="color: white;">Support</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="./questionnaire.html" style="color: white;">Feedback</a>
-              </li>
-              
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="./Funpage.html" style="color: white;">Fun Page</a>
-            </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="./calculator.html" style="color: white;">Calculator</a>
-              </li>
-                
-                <li>
-                    <a class="nav-link active " aria-current="page" href="./Aboutus.html" style="color: white;">About us</a>
-                </li>
-                </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                  </form>
-            </div>
-        </div>
-           
-    </nav>
-
+<body>
     <div class="calculator-container">
         <h2 class="text-center mb-4">Parts Calculator</h2>
-        
-        <div class="part-selection">
-            <h4>Select Parts</h4>
-            <div class="form-check d-flex align-items-center gap-2">
-                <input class="form-check-input" type="checkbox" id="oilFilter" value="25">
-                <label class="form-check-label" for="oilFilter">Oil Filter ($25)</label>
-                <input type="number" class="form-control form-control-sm" id="oilFilter-qty" value="1" min="1" style="width: 70px;" disabled>
+        <form id="partsForm" action="calculator.php" method="POST">
+            <div class="part-selection">
+                <h4>Select Parts</h4>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="selectedParts[]" value="oilFilter" id="oilFilter">
+                    <label class="form-check-label" for="oilFilter">Oil Filter ($25)</label>
+                    <input type="number" class="form-control" name="quantities[]" min="1" value="1" style="width: 70px;" disabled>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="selectedParts[]" value="sparkPlugs" id="sparkPlugs">
+                    <label class="form-check-label" for="sparkPlugs">Spark Plugs Set ($40)</label>
+                    <input type="number" class="form-control" name="quantities[]" min="1" value="1" style="width: 70px;" disabled>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="selectedParts[]" value="shockAbsorber" id="shockAbsorber">
+                    <label class="form-check-label" for="shockAbsorber">Shock Absorber ($120)</label>
+                    <input type="number" class="form-control" name="quantities[]" min="1" value="1" style="width: 70px;" disabled>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="selectedParts[]" value="brakeDisc" id="brakeDisc">
+                    <label class="form-check-label" for="brakeDisc">Brake Disc ($40)</label>
+                    <input type="number" class="form-control" name="quantities[]" min="1" value="1" style="width: 70px;" disabled>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="selectedParts[]" value="brakePads" id="brakePads">
+                    <label class="form-check-label" for="brakePads">Brake Pads ($45)</label>
+                    <input type="number" class="form-control" name="quantities[]" min="1" value="1" style="width: 70px;" disabled>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="selectedParts[]" value="airFilter" id="airFilter">
+                    <label class="form-check-label" for="airFilter">Air Filter ($30)</label>
+                    <input type="number" class="form-control" name="quantities[]" min="1" value="1" style="width: 70px;" disabled>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="selectedParts[]" value="batteryNew" id="batteryNew">
+                    <label class="form-check-label" for="batteryNew">Car Battery ($150)</label>
+                    <input type="number" class="form-control" name="quantities[]" min="1" value="1" style="width: 70px;" disabled>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="selectedParts[]" value="radiator" id="radiator">
+                    <label class="form-check-label" for="radiator">Radiator ($200)</label>
+                    <input type="number" class="form-control" name="quantities[]" min="1" value="1" style="width: 70px;" disabled>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="selectedParts[]" value="alternator" id="alternator">
+                    <label class="form-check-label" for="alternator">Alternator ($180)</label>
+                    <input type="number" class="form-control" name="quantities[]" min="1" value="1" style="width: 70px;" disabled>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="selectedParts[]" value="fuelPump" id="fuelPump">
+                    <label class="form-check-label" for="fuelPump">Fuel Pump ($95)</label>
+                    <input type="number" class="form-control" name="quantities[]" min="1" value="1" style="width: 70px;" disabled>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="selectedParts[]" value="timingBelt" id="timingBelt">
+                    <label class="form-check-label" for="timingBelt">Timing Belt ($70)</label>
+                    <input type="number" class="form-control" name="quantities[]" min="1" value="1" style="width: 70px;" disabled>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="selectedParts[]" value="wiperBlade" id="wiperBlade">
+                    <label class="form-check-label" for="wiperBlade">Wiper Blade ($65)</label>
+                    <input type="number" class="form-control" name="quantities[]" min="1" value="1" style="width: 70px;" disabled>
+                </div>
             </div>
-            <div class="form-check d-flex align-items-center gap-2">
-                <input class="form-check-input" type="checkbox" id="sparkPlugs" value="40">
-                <label class="form-check-label" for="sparkPlugs">Spark Plugs Set ($40)</label>
-                <input type="number" class="form-control form-control-sm" id="sparkPlugs-qty" value="1" min="1" style="width: 70px;" disabled>
-            </div>
-            <div class="form-check d-flex align-items-center gap-2">
-                <input class="form-check-input" type="checkbox" id="shockAbsorber" value="120">
-                <label class="form-check-label" for="shockAbsorber">Shock Absorber ($120)</label>
-                <input type="number" class="form-control form-control-sm" id="shockAbsorber-qty" value="1" min="1" style="width: 70px;" disabled>
-            </div>
-            <div class="form-check d-flex align-items-center gap-2">
-                <input class="form-check-input" type="checkbox" id="brakeDisc" value="40">
-                <label class="form-check-label" for="brakeDisc">Brake Disc ($40)</label>
-                <input type="number" class="form-control form-control-sm" id="brakeDisc-qty" value="1" min="1" style="width: 70px;" disabled>
-            </div>
-            <div class="form-check d-flex align-items-center gap-2">
-                <input class="form-check-input" type="checkbox" id="brakePads" value="45">
-                <label class="form-check-label" for="brakePads">Brake Pads ($45)</label>
-                <input type="number" class="form-control form-control-sm" id="brakePads-qty" value="1" min="1" style="width: 70px;" disabled>
-            </div>
-            <div class="form-check d-flex align-items-center gap-2">
-                <input class="form-check-input" type="checkbox" id="airFilter" value="30">
-                <label class="form-check-label" for="airFilter">Air Filter ($30)</label>
-                <input type="number" class="form-control form-control-sm" id="airFilter-qty" value="1" min="1" style="width: 70px;" disabled>
-            </div>
-            <div class="form-check d-flex align-items-center gap-2">
-                <input class="form-check-input" type="checkbox" id="batteryNew" value="150">
-                <label class="form-check-label" for="batteryNew">Car Battery ($150)</label>
-                <input type="number" class="form-control form-control-sm" id="batteryNew-qty" value="1" min="1" style="width: 70px;" disabled>
-            </div>
-            <div class="form-check d-flex align-items-center gap-2">
-                <input class="form-check-input" type="checkbox" id="radiator" value="200">
-                <label class="form-check-label" for="radiator">Radiator ($200)</label>
-                <input type="number" class="form-control form-control-sm" id="radiator-qty" value="1" min="1" style="width: 70px;" disabled>
-            </div>
-            <div class="form-check d-flex align-items-center gap-2">
-                <input class="form-check-input" type="checkbox" id="alternator" value="180">
-                <label class="form-check-label" for="alternator">Alternator ($180)</label>
-                <input type="number" class="form-control form-control-sm" id="alternator-qty" value="1" min="1" style="width: 70px;" disabled>
-            </div>
-            <div class="form-check d-flex align-items-center gap-2">
-                <input class="form-check-input" type="checkbox" id="fuelPump" value="95">
-                <label class="form-check-label" for="fuelPump">Fuel Pump ($95)</label>
-                <input type="number" class="form-control form-control-sm" id="fuelPump-qty" value="1" min="1" style="width: 70px;" disabled>
-            </div>
-            <div class="form-check d-flex align-items-center gap-2">
-                <input class="form-check-input" type="checkbox" id="timingBelt" value="70">
-                <label class="form-check-label" for="timingBelt">Timing Belt ($70)</label>
-                <input type="number" class="form-control form-control-sm" id="timingBelt-qty" value="1" min="1" style="width: 70px;" disabled>
-            </div>
-            <div class="form-check d-flex align-items-center gap-2">
-                <input class="form-check-input" type="checkbox" id="wiperBlade" value="65">
-                <label class="form-check-label" for="wiperBlade">wiperBlade ($65)</label>
-                <input type="number" class="form-control form-control-sm" id="wiperBlade-qty" value="1" min="1" style="width: 70px;" disabled>
-            </div>
-        </div>
-
-        <div class="customer-info mb-3">
-            <h4>Customer Information</h4>
-            <div class="mb-3">
-                <label for="customerAge" class="form-label">Age</label>
-                <input type="number" class="form-control" id="customerAge">
-            </div>
-            <div class="mb-3">
-                <label for="membershipType" class="form-label">Membership Type</label>
-                <select class="form-select" id="membershipType">
-                    <option value="regular">Regular Customer</option>
-                    <option value="silver">Silver Member</option>
-                    <option value="gold">Gold Member</option>
-                </select>
-            </div>
-        </div>
-
-        <button class="btn btn-primary" onclick="calculateTotal()">Calculate Total</button>
-        
-        <div class="result mt-4">
-            <h4>Bill Summary</h4>
-            <div id="billSummary"></div>
-        </div>
+            <button type="submit" class="btn btn-primary mt-3">Calculate Total</button>
+        </form>
+        <div id="result" class="mt-4"></div>
     </div>
 
     <script>
-        // Execute the function once the window has fully loaded
-        window.onload = function() {
-            // Retrieve URL parameters
-            const urlParams = new URLSearchParams(window.location.search);
-    
-            // Get the value of the 'part' parameter from the URL
-            const partToSelect = urlParams.get('part');
-            
-            // If a specific part is specified in the URL
-            if (partToSelect) {
-                // Find the checkbox corresponding to the part
-                const checkbox = document.getElementById(partToSelect);
-                if (checkbox) {
-                    // Check the checkbox
-                    checkbox.checked = true;
-    
-                    // Enable the corresponding quantity input field
-                    const qtyInput = document.getElementById(`${partToSelect}-qty`);
-                    if (qtyInput) {
-                        qtyInput.disabled = false;
-                    }
-    
-                    // Automatically scroll to the calculator section
-                    document.querySelector('.calculator-container').scrollIntoView({ 
-                        behavior: 'smooth' // Smooth scrolling effect
-                    });
-                }
-            }
-        };
-    
-        // Add event listeners to all checkboxes
+        // Enable quantity input when the corresponding checkbox is checked
         document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
             checkbox.addEventListener('change', function() {
-                // Get the corresponding quantity input field
-                const qtyInput = document.getElementById(`${this.id}-qty`);
-    
-                // Enable or disable the input based on the checkbox state
-                qtyInput.disabled = !this.checked;
+                const qtyInput = this.nextElementSibling.nextElementSibling; // Get the corresponding quantity input
+                qtyInput.disabled = !this.checked; // Enable or disable based on checkbox state
             });
         });
-    
-        // Function to calculate the total bill
-        function calculateTotal() {
-            // Initialize subtotal to 0
-            let subtotal = 0;
-    
-            // Get all checkboxes that are checked
-            const selectedParts = document.querySelectorAll('input[type="checkbox"]:checked');
-    
-            // Loop through selected parts and calculate their cost
-            selectedParts.forEach(part => {
-                // Get the quantity value, defaulting to 1 if it's empty or invalid
-                const quantity = parseInt(document.getElementById(`${part.id}-qty`).value) || 1;
-    
-                // Multiply the part's value (price) by the quantity and add to the subtotal
-                subtotal += parseFloat(part.value) * quantity;
-            });
-    
-            // Get customer details for calculating discounts
-            const age = parseInt(document.getElementById('customerAge').value); // Customer's age
-            const membershipType = document.getElementById('membershipType').value; // Membership type
-    
-            // Initialize discount and discount message
-            let discount = 0;
-            let discountMessage = "";
-    
-            // Apply a 10% discount if the customer is a senior citizen (age 60 or above)
-            if (age >= 60) {
-                discount += 0.10;
-                discountMessage += "Senior Citizen Discount (10%)<br>";
-            }
-    
-            // Apply additional discounts based on membership type
-            switch (membershipType) {
-                case 'gold': // 15% discount for gold members
-                    discount += 0.15;
-                    discountMessage += "Gold Member Discount (15%)<br>";
-                    break;
-                case 'silver': // 10% discount for silver members
-                    discount += 0.10;
-                    discountMessage += "Silver Member Discount (10%)<br>";
-                    break;
-                default:
-                    // No discount for regular customers
-                    break;
-            }
-    
-            // Calculate total discount and final total
-            const totalDiscount = subtotal * discount; // Discount amount
-            const finalTotal = subtotal - totalDiscount; // Total after applying discount
-    
-            // Generate a summary of the bill
-            const summaryHTML = `
-                <p>Subtotal: $${subtotal.toFixed(2)}</p>
-                ${discountMessage} <!-- Display all applicable discounts -->
-                <p>Total Discount: $${totalDiscount.toFixed(2)}</p>
-                <h5>Final Total: $${finalTotal.toFixed(2)}</h5>
-            `;
-    
-            // Display the summary in the 'billSummary' element
-            document.getElementById('billSummary').innerHTML = summaryHTML;
-        }
     </script>
-    
-
-   
-    <footer>
-        <p>&copy; All rights reserved to KNIGHTS CREATIVITY.</p>
-        <div class="footer-links">
-          <a href="./contactas.html">Contact Us</a> | 
-            <a href="#">Terms of Service</a> | 
-            <a href="#">Privacy Policy</a> | 
-            <a href="#">Facebook</a> | 
-            <a href="#">Twitter</a> | 
-            <a href="#">Instagram</a>
-        </div>
-    </footer>
-
 </body>
 </html>

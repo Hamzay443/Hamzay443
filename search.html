@@ -14,7 +14,7 @@
                 padding: 20px;
             }
             .container {
-                max-width: 600px;
+               
                 margin: auto;
                 background: white;
                 padding: 20px;
@@ -61,16 +61,35 @@
     <body>
         
         <div class="container">
-            <h1>Search for Cars</h1>
-            <form id="search-form">
-                <input type="text" id="brand" placeholder="Brand" required>
-                <input type="number" id="year" placeholder="Year" required>
-                <input type="text" id="color" placeholder="Color" required>
+            <h1>Car Management</h1>
+            <form action="search.php" id="search-form">
+                <input type="text" id="brand" placeholder="Brand" required aria-label="Car Brand">
+                <input type="number" id="year" placeholder="Year" required aria-label="Car Year">
+                <input type="text" id="color" placeholder="Color" required aria-label="Car Color">
                 <button type="submit">Search</button>
             </form>
-            <div id="results">
-                <h1>Search for Cars</h1>
-            </div>
+            <div id="loading" style="display:none;">Loading...</div> <!-- Loading indicator -->
+            <div id="results"></div>
+            
+            <form action="insert.php" method="POST">
+                <input type="text" name="brand" placeholder="Brand" required>
+                <input type="number" name="year" placeholder="Year" required>
+                <input type="text" name="color" placeholder="Color" required>
+                <button type="submit">Add Car</button>
+            </form>
+            
+            <form action="delete.php" method="POST">
+                <input type="number" name="car_id" placeholder="Car ID" required>
+                <button type="submit">Delete Car</button>
+            </form>
+
+            <form action="update.php" method="POST">
+                <input type="text" name="registration_number" placeholder="Registration Number" required>
+                <input type="text" name="new_brand" placeholder="New Brand" required>
+                <input type="number" name="new_year" placeholder="New Year" required>
+                <input type="text" name="new_color" placeholder="New Color" required>
+                <button type="submit">Update Car</button>
+            </form>
         </div>
 
         <script>
@@ -81,14 +100,20 @@
                 const year = document.getElementById('year').value;
                 const color = document.getElementById('color').value;
 
+                const resultsDiv = document.getElementById('results');
+                const loadingDiv = document.getElementById('loading');
+                loadingDiv.style.display = 'block'; // Show loading indicator
+                resultsDiv.innerHTML = ''; // Clear previous results
+
                 try {
                     // Fetch data from the server
                     const response = await fetch(`search.php?brand=${brand}&year=${year}&color=${color}`);
                     const data = await response.json();
 
+                    // Hide loading indicator
+                    loadingDiv.style.display = 'none';
+
                     // Display results
-                    const resultsDiv = document.getElementById('results');
-                    resultsDiv.innerHTML = ''; // Clear previous results
                     if (data.error) {
                         resultsDiv.innerHTML = `<p>Error: ${data.error}</p>`;
                     } else if (data.length > 0) {
@@ -103,10 +128,12 @@
                     }
                 } catch (error) {
                     console.error('Error fetching data:', error);
-                    const resultsDiv = document.getElementById('results');
-                    resultsDiv.innerHTML = '<p>An error occurred while fetching data.</p>';
+                    loadingDiv.style.display = 'none'; // Hide loading indicator
+                    resultsDiv.innerHTML = '<p>An error occurred while fetching data. Please try again later.</p>';
                 }
             });
+
+        
         </script>
         
     </body>
