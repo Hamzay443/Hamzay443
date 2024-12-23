@@ -24,7 +24,7 @@ if (!empty($color)) {
     $sql .= " AND color LIKE '%" . $conn->real_escape_string($color) . "%'";
 }
 
-// Execute the query
+// Execute the querya
 $result = $conn->query($sql);
 
 // Prepare an array to hold the results

@@ -148,7 +148,7 @@
             const tbody = document.getElementById('milestonesTableBody');
             tbody.innerHTML = '';
             
-            milestoneArray.forEach(milestone => {
+            for (const milestone of milestoneArray) {
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td>${milestone.year}</td>
@@ -156,7 +156,7 @@
                     <td>${milestone.description}</td>
                 `;
                 tbody.appendChild(row);
-            });
+            }
         }
 
         // Search function
